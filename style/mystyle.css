@@ -1,0 +1,59 @@
+.hero-bg {
+  background-image: url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+}
+a,
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom CSS for continuous scrolling carousel */
+.continuous-carousel-outer {
+  overflow: hidden; /* Hide scrollbar and content outside of this area */
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Ensure it doesn't overflow its parent */
+}
+
+.continuous-carousel-inner {
+  display: flex;
+  width: max-content; /* Allow content to dictate width */
+  animation: scrollTestimonials linear infinite;
+}
+
+.continuous-carousel-item {
+  flex-shrink: 0; /* Prevent items from shrinking */
+  width: 25%; /* Show 4 items at a time on desktop - REDUCED SIZE */
+  padding: 0 0.5rem; /* Adjust spacing between cards */
+  box-sizing: border-box; /* Include padding in width calculation */
+  height: auto; /* Allow card height to adjust to content */
+}
+
+.continuous-carousel-item .card {
+  padding: 1rem; /* Add padding inside the card */
+  height: 100%; /* Make sure inner card takes full height of the item */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .continuous-carousel-item {
+    width: 80%; /* Show more of one item on smaller screens */
+  }
+}
+
+@keyframes scrollTestimonials {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.continuous-carousel-outer:hover .continuous-carousel-inner {
+  animation-play-state: paused;
+}
