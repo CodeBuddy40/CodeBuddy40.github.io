@@ -40,7 +40,7 @@ button {
 
 @media (max-width: 768px) {
   .continuous-carousel-item {
-    width: 80%; /* Show more of one item on smaller screens */
+    width: 20%; /* Show more of one item on smaller screens */
   }
 }
 
