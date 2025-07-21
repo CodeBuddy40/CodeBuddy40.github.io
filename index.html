@@ -4,28 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeBuddy - Jasa Pembuatan Tugas & Aplikasi</title>
+    <meta
+      name="description"
+      content="CodeBuddy menyediakan jasa pembuatan tugas kuliah pemrograman dan pengembangan aplikasi. Solusi terbaik untuk kebutuhan coding Anda."
+    />
+
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"
       rel="stylesheet"
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-      /* Custom styles if needed */
       .hero-bg {
-        background-image: url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Ganti dengan gambar latar belakang yang relevan */
+        background-image: url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         background-size: cover;
         background-position: center;
+      }
+      a,
+      button {
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Custom CSS for continuous scrolling carousel */
+      .continuous-carousel-outer {
+        overflow: hidden; /* Hide scrollbar and content outside of this area */
+        position: relative;
+        width: 100%;
+        max-width: 100%; /* Ensure it doesn't overflow its parent */
+      }
+
+      .continuous-carousel-inner {
+        display: flex;
+        width: max-content; /* Allow content to dictate width */
+        animation: scrollTestimonials linear infinite;
+      }
+
+      .continuous-carousel-item {
+        flex-shrink: 0; /* Prevent items from shrinking */
+        width: 25%; /* Show 4 items at a time on desktop - REDUCED SIZE */
+        padding: 0 0.5rem; /* Adjust spacing between cards */
+        box-sizing: border-box; /* Include padding in width calculation */
+        height: auto; /* Allow card height to adjust to content */
+      }
+
+      .continuous-carousel-item .card {
+        padding: 1rem; /* Add padding inside the card */
+        height: 100%; /* Make sure inner card takes full height of the item */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 768px) {
+        .continuous-carousel-item {
+          width: 80%; /* Show more of one item on smaller screens */
+        }
+      }
+
+      @keyframes scrollTestimonials {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Pause animation on hover */
+      .continuous-carousel-outer:hover .continuous-carousel-inner {
+        animation-play-state: paused;
       }
     </style>
   </head>
   <body>
-    <div class="navbar bg-base-100 shadow-md">
+    <div class="navbar bg-base-100 shadow-md fixed w-full top-0 z-40">
       <div class="flex-1">
         <a class="btn btn-ghost normal-case text-xl" href="#">
-          <img src="img/Logo1.png" alt="CodeBuddy Logo" class="h-8 w-8 mr-2" />
+          <img
+            src="img/Logo1.png"
+            alt="CodeBuddy Logo"
+            class="h-8 w-8 mr-2"
+            loading="lazy"
+          />
           CodeBuddy
         </a>
       </div>
@@ -49,163 +114,329 @@
       </div>
       <div class="flex-none hidden lg:block">
         <ul class="menu menu-horizontal px-1">
+          <li><a href="#home">Home</a></li>
           <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
           <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#kontak">Kontak</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="drawer drawer-end">
+    <div class="drawer drawer-end" id="home">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
-        <div class="hero min-h-screen hero-bg text-white">
-          <div class="hero-overlay bg-opacity-60"></div>
-          <div class="hero-content text-center text-neutral-content">
-            <div class="max-w-md">
-              <h1 class="mb-5 text-5xl font-bold">Butuh Bantuan Coding?</h1>
-              <p class="mb-5">
-                CodeBuddy siap membantu mengerjakan tugas kuliah pemrograman dan
-                aplikasi Anda dengan solusi terbaik dan efisien.
-              </p>
-              <a href="#layanan" class="btn btn-primary btn-lg"
-                >Lihat Layanan Kami</a
+        <main class="pt-16">
+          <div class="hero min-h-screen hero-bg text-white">
+            <div class="hero-overlay bg-opacity-60"></div>
+            <div class="hero-content text-center text-neutral-content">
+              <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Butuh Bantuan Coding?</h1>
+                <p class="mb-5">
+                  CodeBuddy siap membantu mengerjakan tugas kuliah pemrograman
+                  dan aplikasi Anda dengan solusi terbaik dan efisien.
+                </p>
+                <a href="#layanan" class="btn btn-primary btn-lg"
+                  >Lihat Layanan Kami</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div id="layanan" class="container mx-auto p-8 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12">Layanan Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h3 class="card-title text-2xl">Tugas Pemrograman</h3>
+                  <p>
+                    Membantu berbagai jenis tugas pemrograman (Python, Java,
+                    C++, JavaScript, dll.) sesuai kebutuhan Anda.
+                  </p>
+                  <div class="card-actions justify-end"></div>
+                </div>
+              </div>
+              <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h3 class="card-title text-2xl">Pengembangan Aplikasi</h3>
+                  <p>
+                    Membangun aplikasi berbasis web, mobile, atau desktop dari
+                    konsep hingga implementasi.
+                  </p>
+                  <div class="card-actions justify-end"></div>
+                </div>
+              </div>
+              <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <h3 class="card-title text-2xl">Konsultasi & Debugging</h3>
+                  <p>
+                    Memberikan konsultasi dan bantuan untuk menemukan serta
+                    memperbaiki bug pada kode Anda.
+                  </p>
+                  <div class="card-actions justify-end"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="testimoni" class="bg-base-200 py-16">
+            <div class="container mx-auto p-8 text-center">
+              <h2 class="text-4xl font-bold mb-12">Apa Kata Mereka?</h2>
+              <div
+                id="testimoni-carousel-container"
+                class="continuous-carousel-outer max-w-full mx-auto p-4 space-x-4 bg-neutral rounded-box"
               >
-            </div>
-          </div>
-        </div>
-
-        <div id="layanan" class="container mx-auto p-8 py-16">
-          <h2 class="text-4xl font-bold text-center mb-12">Layanan Kami</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="card bg-base-100 shadow-xl">
-              <div class="card-body">
-                <h3 class="card-title text-2xl">Tugas Pemrograman</h3>
-                <p>
-                  Membantu berbagai jenis tugas pemrograman (Python, Java, C++,
-                  JavaScript, dll.) sesuai kebutuhan Anda.
-                </p>
-                <div class="card-actions justify-end"></div>
-              </div>
-            </div>
-            <div class="card bg-base-100 shadow-xl">
-              <div class="card-body">
-                <h3 class="card-title text-2xl">Pengembangan Aplikasi</h3>
-                <p>
-                  Membangun aplikasi berbasis web, mobile, atau desktop dari
-                  konsep hingga implementasi.
-                </p>
-                <div class="card-actions justify-end"></div>
-              </div>
-            </div>
-            <div class="card bg-base-100 shadow-xl">
-              <div class="card-body">
-                <h3 class="card-title text-2xl">Konsultasi & Debugging</h3>
-                <p>
-                  Memberikan konsultasi dan bantuan untuk menemukan serta
-                  memperbaiki bug pada kode Anda.
-                </p>
-                <div class="card-actions justify-end"></div>
+                <div
+                  class="continuous-carousel-inner"
+                  style="animation-duration: 20s"
+                >
+                  <div
+                    class="continuous-carousel-item w-full flex flex-col items-center p-4 sm:p-8"
+                  >
+                    <span
+                      class="loading loading-spinner loading-lg text-primary"
+                    ></span>
+                    <p class="mt-4 text-center">Memuat testimoni...</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        ---
-
-        <div id="tentang" class="bg-base-200 py-16">
-          <div class="container mx-auto p-8">
-            <h2 class="text-4xl font-bold text-center mb-12">
-              Tentang CodeBuddy
-            </h2>
-            <div class="flex flex-col md:flex-row items-center gap-8">
-              <div class="md:w-1/2">
-                <img
-                  src="img/Logo1.png"
-                  alt="Tentang CodeBuddy"
-                  class="rounded-lg shadow-lg"
-                />
-              </div>
-              <div class="md:w-1/2 text-center md:text-left">
-                <p class="text-lg mb-4">
-                  CodeBuddy hadir sebagai mitra terpercaya bagi mahasiswa yang
-                  membutuhkan bantuan dalam ranah pemrograman dan pengembangan
-                  aplikasi. Kami berkomitmen untuk menyediakan solusi
-                  berkualitas tinggi, tepat waktu, dan sesuai dengan kebutuhan
-                  akademik Anda.
-                </p>
-                <p class="text-lg">
-                  Dengan tim yang berpengalaman, kami memastikan setiap proyek
-                  ditangani dengan profesionalisme dan dedikasi.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        ---
-
-        <div id="kontak" class="py-16 text-center">
-          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-xl mx-auto py-8">
-              <h2 class="text-3xl sm:text-4xl font-bold mb-8">
-                Siap Memulai Proyek Anda?
+          <div id="tentang" class="bg-base-100 py-16">
+            <div class="container mx-auto p-8">
+              <h2 class="text-4xl font-bold text-center mb-12">
+                Tentang CodeBuddy
               </h2>
-              <p class="text-base sm:text-lg mb-8">
-                Hubungi kami sekarang untuk konsultasi gratis dan dapatkan
-                solusi terbaik untuk tugas atau aplikasi Anda!
-              </p>
-              <a
-                href="https://wa.me/6283153475482?text=Halo%20CodeBuddy,%20saya%20tertarik%20dengan%20jasa%20pembuatan%20tugas/aplikasi.%20Bisakah%20saya%20mendapatkan%20informasi%20lebih%20lanjut?"
-                target="_blank"
-                class="btn btn-success btn-lg text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                  class="h-6 w-6 mr-2 fill-current"
-                >
-                  <path
-                    d="M380.9 97.1C339.4 55.4 283.9 32 223.5 32c-122 0-222 99.4-222 222 0 39.8 11 79.1 32 113.8L6.4 448l116.1-34.7c31.3 17.1 66.3 27.5 102.9 27.5h.1c122 0 222-99.4 222-222 0-60.4-22.4-116-63.1-157.2zM223.5 400.6c-31.5 0-61.9-9-88.7-26.2l-6.3-3.7-64 17.1 17.5-62L96 295.5c-18.7-31.4-28.7-67.4-28.7-105.7 0-101.9 83.2-184.8 185.5-184.8 50 0 97.4 19.5 133.3 55.4s55.4 83.3 55.4 133.3c.1 101.9-83.1 184.8-185.4 184.8zm100.9-138.6c-5.8-2.9-34.3-17-39.6-18.9s-9.1-2.9-12.9 2.9c-3.7 5.8-14.2 18.9-17.3 22.7-3.2 3.7-6.3 4.2-11.8 1.4-5.6-2.9-23.7-8.7-45-27.8-16.7-14.2-28-31.7-31.5-37.4-3.7-5.8-.4-9 2.6-11.8s5.8-5 8.7-8c2.9-2.9 3.7-5 5.8-8.7 1.4-3.7.7-6.9-.2-9.6-.9-2.9-8.7-22.1-12-30.2-3.2-7.8-6.3-6.5-9.1-6.5-2.9 0-6.3-.4-9.6-.4s-8.7 1.4-12.9 5c-4.2 3.7-16.2 15.8-16.2 38.5s16.7 44.5 19.5 48.3c2.9 3.7 32.5 50.8 79.1 71.7 17.1 7.6 30.7 12.2 41 15.6 15.8 5 28.5 4.2 39.3 2.6 12.9-1.9 34.3-14 39.1-27.8 4.7-13.8 4.7-25.7 3.2-27.8-1.5-2.9-5.8-4.5-12.5-7.9z"
+              <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                  <img
+                    src="img/Logo1.png"
+                    alt="Tentang CodeBuddy"
+                    class="rounded-lg shadow-lg"
+                    loading="lazy"
                   />
-                </svg>
-                Pesan Sekarang via WhatsApp
-              </a>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                  <p class="text-lg mb-4">
+                    CodeBuddy hadir sebagai mitra terpercaya bagi mahasiswa yang
+                    membutuhkan bantuan dalam ranah pemrograman dan pengembangan
+                    aplikasi. Kami berkomitmen untuk menyediakan solusi
+                    berkualitas tinggi, tepat waktu, dan sesuai dengan kebutuhan
+                    akademik Anda.
+                  </p>
+                  <p class="text-lg">
+                    Dengan tim yang berpengalaman, kami memastikan setiap proyek
+                    ditangani dengan profesionalisme dan dedikasi.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        ---
-
-        <footer class="footer footer-center p-10 bg-base-300 text-base-content">
-          <aside>
-            <img src="img/Logo1.png" alt="CodeBuddy Logo" class="h-10 w-10" />
-            <p class="font-bold">
-              CodeBuddy
-              <br />Solusi Terbaik untuk Tugas Pemrograman dan Aplikasi Anda.
-            </p>
-            <p>Copyright © 2025 - All right reserved</p>
-          </aside>
-          <nav>
-            <div class="grid grid-flow-col gap-4">
-              <a
-                href="https://wa.me/6283153475482"
-                target="_blank"
-                aria-label="WhatsApp"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  class="fill-current"
-                >
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.321 14.896c-.309.096-.949.497-1.802.497-1.42 0-2.327-.557-2.327-2.193V9.01h-1.53V8.049h1.53v-.735c0-1.304.792-2.138 2.215-2.138 1.442 0 1.956.108 2.203.146v.835h-.475c-.244-.029-.48-.037-.69-.037-.626 0-1.026.241-1.026.963v.794h1.69l-.213.961h-1.477v4.612c0 .48.026.757.29.988.264.231.554.269.873.269.21 0 .399-.016.591-.044l.215-.029.071-.009z"
-                  /></svg
-              ></a>
+          <div id="faq" class="container mx-auto p-8 py-16">
+            <h2 class="text-4xl font-bold text-center mb-12">
+              Pertanyaan Umum
+            </h2>
+            <div class="max-w-3xl mx-auto">
+              <div class="collapse collapse-plus bg-base-200 mb-2">
+                <input type="radio" name="my-accordion-faq" checked="checked" />
+                <div class="collapse-title text-xl font-medium">
+                  Bagaimana proses pemesanan tugas/aplikasi?
+                </div>
+                <div class="collapse-content">
+                  <p>
+                    Anda bisa menghubungi kami via WhatsApp dengan menjelaskan
+                    detail kebutuhan tugas atau aplikasi Anda. Kami akan
+                    mempelajari, memberikan estimasi waktu dan biaya, lalu jika
+                    disepakati, kami akan mulai pengerjaan.
+                  </p>
+                </div>
+              </div>
+              <div class="collapse collapse-plus bg-base-200 mb-2">
+                <input type="radio" name="my-accordion-faq" />
+                <div class="collapse-title text-xl font-medium">
+                  Bahasa pemrograman apa saja yang dilayani?
+                </div>
+                <div class="collapse-content">
+                  <p>
+                    Kami melayani berbagai bahasa pemrograman populer seperti
+                    Python, Java, C++, JavaScript (Node.js, React, Vue), PHP
+                    (Laravel, CodeIgniter), dan lainnya. Silakan konsultasikan
+                    kebutuhan spesifik Anda.
+                  </p>
+                </div>
+              </div>
+              <div class="collapse collapse-plus bg-base-200 mb-2">
+                <input type="radio" name="my-accordion-faq" />
+                <div class="collapse-title text-xl font-medium">
+                  Apakah ada garansi setelah pengerjaan selesai?
+                </div>
+                <div class="collapse-content">
+                  <p>
+                    Ya, kami memberikan masa garansi untuk perbaikan bug atau
+                    penyesuaian minor setelah proyek selesai, sesuai kesepakatan
+                    awal. Kepuasan klien adalah prioritas kami.
+                  </p>
+                </div>
+              </div>
+              <div class="collapse collapse-plus bg-base-200 mb-2">
+                <input type="radio" name="my-accordion-faq" />
+                <div class="collapse-title text-xl font-medium">
+                  Berapa lama waktu pengerjaan proyek?
+                </div>
+                <div class="collapse-content">
+                  <p>
+                    Waktu pengerjaan sangat bervariasi tergantung kompleksitas
+                    proyek. Kami akan memberikan estimasi yang realistis setelah
+                    mendapatkan detail lengkap dari Anda. Kami selalu berusaha
+                    tepat waktu.
+                  </p>
+                </div>
+              </div>
             </div>
-          </nav>
-        </footer>
+          </div>
+
+          <div id="kontak" class="py-16 text-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="max-w-xl mx-auto py-8">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8">
+                  Siap Memulai Proyek Anda?
+                </h2>
+                <p class="text-base sm:text-lg mb-8">
+                  Hubungi kami sekarang untuk konsultasi gratis dan dapatkan
+                  solusi terbaik untuk tugas atau aplikasi Anda!
+                </p>
+                <a
+                  href="https://wa.me/6283153475482?text=Halo%20CodeBuddy,%20saya%20tertarik%20dengan%20jasa%20pembuatan%20tugas/aplikasi.%20Bisakah%20saya%20mendapatkan%20informasi%20lebih%20lanjut?"
+                  target="_blank"
+                  class="btn btn-success btn-lg text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    class="h-6 w-6 mr-2 fill-current"
+                  >
+                    <path
+                      d="M380.9 97.1C339.4 55.4 283.9 32 223.5 32c-122 0-222 99.4-222 222 0 39.8 11 79.1 32 113.8L6.4 448l116.1-34.7c31.3 17.1 66.3 27.5 102.9 27.5h.1c122 0 222-99.4 222-222 0-60.4-22.4-116-63.1-157.2zM223.5 400.6c-31.5 0-61.9-9-88.7-26.2l-6.3-3.7-64 17.1 17.5-62L96 295.5c-18.7-31.4-28.7-67.4-28.7-105.7 0-101.9 83.2-184.8 185.5-184.8 50 0 97.4 19.5 133.3 55.4s55.4 83.3 55.4 133.3c.1 101.9-83.1 184.8-185.4 184.8zm100.9-138.6c-5.8-2.9-34.3-17-39.6-18.9s-9.1-2.9-12.9 2.9c-3.7 5.8-14.2 18.9-17.3 22.7-3.2 3.7-6.3 4.2-11.8 1.4-5.6-2.9-23.7-8.7-45-27.8-16.7-14.2-28-31.7-31.5-37.4-3.7-5.8-.4-9 2.6-11.8s5.8-5 8.7-8c2.9-2.9 3.7-5 5.8-8.7 1.4-3.7.7-6.9-.2-9.6-.9-2.9-8.7-22.1-12-30.2-3.2-7.8-6.3-6.5-9.1-6.5-2.9 0-6.3-.4-9.6-.4s-8.7 1.4-12.9 5c-4.2 3.7-16.2 15.8-16.2 38.5s16.7 44.5 19.5 48.3c2.9 3.7 32.5 50.8 79.1 71.7 17.1 7.6 30.7 12.2 41 15.6 15.8 5 28.5 4.2 39.3 2.6 12.9-1.9 34.3-14 39.1-27.8 4.7-13.8 4.7-25.7 3.2-27.8-1.5-2.9-5.8-4.5-12.5-7.9z"
+                    />
+                  </svg>
+                  Pesan Sekarang via WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div id="form-testimoni" class="bg-base-100 py-16">
+            <div class="container mx-auto p-8 max-w-2xl">
+              <h2 class="text-4xl font-bold text-center mb-8">
+                Berikan Testimoni Anda
+              </h2>
+              <p class="text-center text-lg mb-8">
+                Kami sangat menghargai masukan Anda. Bagikan pengalaman baik
+                Anda dengan CodeBuddy!
+              </p>
+              <form
+                id="testimonial-form"
+                class="card bg-base-200 shadow-xl p-8"
+              >
+                <div class="form-control mb-4">
+                  <label class="label" for="nama">
+                    <span class="label-text"
+                      >Nama Anda <span class="text-error">*</span></span
+                    >
+                  </label>
+                  <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Nama Lengkap Anda"
+                    class="input input-bordered w-full"
+                    required
+                  />
+                </div>
+                <div class="form-control mb-4">
+                  <label class="label" for="avatarUrl">
+                    <span class="label-text">URL Foto Profil (Opsional)</span>
+                  </label>
+                  <input
+                    type="url"
+                    id="avatarUrl"
+                    name="avatarUrl"
+                    placeholder="Contoh: https://example.com/foto-saya.jpg"
+                    class="input input-bordered w-full"
+                  />
+                  <small class="text-xs text-gray-500 mt-1"
+                    >Gunakan URL gambar publik (misal dari Google Photos, Imgur,
+                    dll).</small
+                  >
+                </div>
+                <div class="form-control mb-4">
+                  <label class="label" for="testimoni-text">
+                    <span class="label-text"
+                      >Testimoni Anda <span class="text-error">*</span></span
+                    >
+                  </label>
+                  <textarea
+                    id="testimoni-text"
+                    name="testimoni"
+                    placeholder="Tulis testimoni Anda di sini..."
+                    class="textarea textarea-bordered h-24 w-full"
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-control mt-6">
+                  <button type="submit" class="btn btn-primary">
+                    Kirim Testimoni
+                  </button>
+                </div>
+              </form>
+              <div
+                id="form-message"
+                class="text-center mt-4 p-3 rounded hidden"
+              ></div>
+            </div>
+          </div>
+
+          <footer
+            class="footer footer-center p-10 bg-base-300 text-base-content"
+          >
+            <aside>
+              <img
+                src="img/Logo1.png"
+                alt="CodeBuddy Logo"
+                class="h-10 w-10"
+                loading="lazy"
+              />
+              <p class="font-bold">
+                CodeBuddy <br />Solusi Terbaik untuk Tugas Pemrograman dan
+                Aplikasi Anda.
+              </p>
+              <p>Copyright © 2025 - All right reserved</p>
+            </aside>
+            <nav>
+              <div class="grid grid-flow-col gap-4">
+                <a
+                  href="https://wa.me/6283153475482"
+                  target="_blank"
+                  aria-label="WhatsApp"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    class="fill-current"
+                  >
+                    <path
+                      d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.321 14.896c-.309.096-.949.497-1.802.497-1.42 0-2.327-.557-2.327-2.193V9.01h-1.53V8.049h1.53v-.735c0-1.304.792-2.138 2.215-2.138 1.442 0 1.956.108 2.203.146v.835h-.475c-.244-.029-.48-.037-.69-.037-.626 0-1.026.241-1.026.963v.794h1.69l-.213.961h-1.477v4.612c0 .48.026.757.29.988.264.231.554.269.873.269.21 0 .399-.016.591-.044l.215-.029.071-.009z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </nav>
+          </footer>
+        </main>
       </div>
 
       <div class="drawer-side z-50">
@@ -215,11 +446,16 @@
           class="drawer-overlay"
         ></label>
         <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <li><a href="#home">Home</a></li>
           <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
           <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#kontak">Kontak</a></li>
         </ul>
       </div>
     </div>
+
+    <script src="script/myscript.js"></script>
   </body>
 </html>
